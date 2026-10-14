@@ -1,0 +1,17 @@
+story_id,jira_key,epic,epic_jira_key,rank,release,url
+S-11,PPKR-6,Адміністрування,PPKR-5,1,REL-1,https://merelydashboard.atlassian.net/browse/PPKR-6
+S-01,PPKR-7,Доступ,PPKR-1,2,REL-1,https://merelydashboard.atlassian.net/browse/PPKR-7
+S-02,PPKR-8,Доступ,PPKR-1,3,REL-1,https://merelydashboard.atlassian.net/browse/PPKR-8
+S-05,PPKR-9,Сесія,PPKR-2,4,REL-1,https://merelydashboard.atlassian.net/browse/PPKR-9
+S-03,PPKR-10,Сесія,PPKR-2,5,REL-1,https://merelydashboard.atlassian.net/browse/PPKR-10
+S-04,PPKR-11,Сесія,PPKR-2,6,REL-1,https://merelydashboard.atlassian.net/browse/PPKR-11
+S-14,PPKR-12,Сесія,PPKR-2,7,REL-1,https://merelydashboard.atlassian.net/browse/PPKR-12
+S-06,PPKR-13,Статистика,PPKR-3,8,REL-1,https://merelydashboard.atlassian.net/browse/PPKR-13
+S-16,PPKR-14,Доступ,PPKR-1,9,REL-1,https://merelydashboard.atlassian.net/browse/PPKR-14
+S-07,PPKR-15,Статистика,PPKR-3,10,REL-1,https://merelydashboard.atlassian.net/browse/PPKR-15
+S-15,PPKR-16,Статистика,PPKR-3,11,REL-1,https://merelydashboard.atlassian.net/browse/PPKR-16
+S-10,PPKR-17,Інтеграції,PPKR-4,12,REL-1,https://merelydashboard.atlassian.net/browse/PPKR-17
+S-13,PPKR-18,Адміністрування,PPKR-5,13,,https://merelydashboard.atlassian.net/browse/PPKR-18
+S-08,PPKR-19,Сесія,PPKR-2,14,,https://merelydashboard.atlassian.net/browse/PPKR-19
+S-12,PPKR-20,Адміністрування,PPKR-5,15,,https://merelydashboard.atlassian.net/browse/PPKR-20
+S-09,PPKR-21,Інтеграції,PPKR-4,16,,https://merelydashboard.atlassian.net/browse/PPKR-21

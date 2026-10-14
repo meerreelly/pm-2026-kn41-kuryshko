@@ -1,0 +1,47 @@
+name: Validate labs
+
+on:
+  push:
+    paths:
+      - 'lr*/**'
+      - 'tools/**'
+      - 'README.md'
+      - '.github/workflows/validate-labs.yml'
+  pull_request:
+    paths:
+      - 'lr*/**'
+      - 'tools/**'
+      - 'README.md'
+      - '.github/workflows/validate-labs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-labs-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate changed lab directories
+    if: ${{ !github.event.deleted }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Validate labs and write summary
+        env:
+          PYTHONUTF8: '1'
+        run: python tools/validate_changed.py

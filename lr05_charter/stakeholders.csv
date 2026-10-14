@@ -1,1 +1,6 @@
 stakeholder_id,name_or_role,organization,interest,influence,attitude,strategy,owner
+ST-01,Представник кафедри-замовника,Кафедра управління проєктами,high,high,supporter,manage_closely,PM
+ST-02,Викладач-фасилітатор пілотної сесії,Кафедра управління проєктами,high,high,supporter,manage_closely,PM
+ST-03,Учасники навчальних сесій,Студентська група,low,low,neutral,monitor,QA
+ST-04,Представник іншої кафедри,Інша кафедра з курсом Agile,high,low,supporter,keep_informed,PM
+ST-05,Адміністратор середовища розгортання,ІТ-служба академії,low,high,neutral,keep_satisfied,DevOps
