@@ -1,0 +1,3000 @@
+{
+  "schema_version": "1.18.1",
+  "updated": "2026-10-04",
+  "course": "Управління ІТ проєктами, 2026",
+  "note": "Джерело правди для схем артефактів. Валідатор, умови робіт і шаблон репозиторію студента беруть колонки звідси. Правити тільки тут, далі перегенерувати SCHEMAS.md і шаблони.",
+  "conventions": {
+    "encoding": "utf-8",
+    "delimiter": ",",
+    "decimal_separator": ".",
+    "date_format": "YYYY-MM-DD",
+    "list_separator": ";",
+    "header_language": "англійська, імена колонок точно як у спеці",
+    "value_language": "українська",
+    "empty_value": "порожня клітинка, не прочерк і не n/a",
+    "no_total_rows": "рядків «Разом» у CSV немає, суми рахує валідатор",
+    "no_merged_cells": "одна сутність це один рядок, об'єднаних клітинок немає",
+    "single_source": "одне число має одне місце: оцінка тільки в estimates.csv, дати і статус тільки у flow.csv, беклог їх не дублює",
+    "stable_ids": "ID фіксуються при створенні і не перенумеровуються до кінця семестру",
+    "id_formats": {
+      "story_id": "S-01",
+      "stakeholder_id": "ST-01",
+      "wbs_id": "1.2.3",
+      "release_id": "REL-1",
+      "flow_item_id": "F-001",
+      "finding_id": "FN-01",
+      "dashboard_metric_id": "MT-01",
+      "risk_id": "R-01",
+      "debt_id": "D-01",
+      "change_id": "CH-01",
+      "activity_id": "A-01",
+      "communication_id": "C-01",
+      "budget_line_id": "B-01",
+      "source_id": "SRC-01",
+      "task_id": "T-01",
+      "criterion_id": "SC-01",
+      "ai_item_id": "AT-01",
+      "prompt_run_id": "P-01",
+      "ai_error_id": "ER-01",
+      "time_case_id": "TS-01",
+      "ai_rule_id": "PL-01"
+    }
+  },
+  "enums": {
+    "interest": [
+      "low",
+      "high"
+    ],
+    "influence": [
+      "low",
+      "high"
+    ],
+    "attitude": [
+      "supporter",
+      "neutral",
+      "blocker"
+    ],
+    "stakeholder_strategy": [
+      "manage_closely",
+      "keep_satisfied",
+      "keep_informed",
+      "monitor"
+    ],
+    "priority_method": [
+      "moscow",
+      "rice",
+      "wsjf"
+    ],
+    "moscow_class": [
+      "must",
+      "should",
+      "could",
+      "wont"
+    ],
+    "story_points": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "5",
+      "8",
+      "13",
+      "21",
+      "?"
+    ],
+    "final_points": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "5",
+      "8",
+      "13",
+      "21"
+    ],
+    "flow_type": [
+      "feature",
+      "bug",
+      "tech_debt",
+      "other"
+    ],
+    "reference_dataset": [
+      "burndown",
+      "cfd",
+      "dora"
+    ],
+    "risk_category": [
+      "technical",
+      "external",
+      "organizational",
+      "project_management"
+    ],
+    "risk_strategy": [
+      "avoid",
+      "mitigate",
+      "transfer",
+      "accept",
+      "escalate"
+    ],
+    "risk_status": [
+      "open",
+      "closed",
+      "realized"
+    ],
+    "debt_type": [
+      "deliberate_prudent",
+      "deliberate_reckless",
+      "inadvertent_prudent",
+      "inadvertent_reckless"
+    ],
+    "debt_decision": [
+      "pay_now",
+      "pay_later",
+      "accept"
+    ],
+    "debt_impact": [
+      "low",
+      "medium",
+      "high"
+    ],
+    "raci_role": [
+      "R",
+      "A",
+      "AR",
+      "C",
+      "I"
+    ],
+    "channel": [
+      "email",
+      "meeting",
+      "chat",
+      "report",
+      "demo",
+      "call"
+    ],
+    "frequency": [
+      "daily",
+      "weekly",
+      "biweekly",
+      "monthly",
+      "on_event"
+    ],
+    "comm_format": [
+      "written",
+      "verbal",
+      "dashboard",
+      "presentation"
+    ],
+    "budget_category": [
+      "labor",
+      "tools",
+      "infrastructure",
+      "other",
+      "contingency",
+      "management_reserve"
+    ],
+    "lr02_case": [
+      "C-1",
+      "C-2",
+      "C-3"
+    ],
+    "criterion": [
+      "requirements",
+      "technology",
+      "release_cost",
+      "customer",
+      "contract",
+      "team"
+    ],
+    "pull": [
+      "predictive",
+      "adaptive",
+      "neutral"
+    ],
+    "approach": [
+      "predictive",
+      "adaptive",
+      "hybrid"
+    ],
+    "yes_no": [
+      "yes",
+      "no"
+    ],
+    "change_source": [
+      "course_event",
+      "customer",
+      "own_decision",
+      "external"
+    ],
+    "change_decision": [
+      "accepted",
+      "rejected",
+      "deferred"
+    ],
+    "impact_dimension": [
+      "scope",
+      "schedule",
+      "budget",
+      "quality",
+      "risk"
+    ],
+    "note_item_type": [
+      "task",
+      "decision",
+      "open_question"
+    ],
+    "item_origin": [
+      "mine",
+      "ai",
+      "both"
+    ],
+    "prompt_result": [
+      "used",
+      "used_with_edits",
+      "rejected"
+    ],
+    "ai_error_type": [
+      "fabrication",
+      "omission",
+      "overconfidence",
+      "other"
+    ],
+    "time_basis": [
+      "measured",
+      "estimated"
+    ],
+    "ai_mode": [
+      "autonomous",
+      "draft",
+      "forbidden"
+    ]
+  },
+  "files": [
+    {
+      "path": "lr01_case/sources.csv",
+      "work": "ЛР1",
+      "title": "Джерела розтину кейсу",
+      "key": "source_id",
+      "min_rows": 3,
+      "columns": [
+        {
+          "name": "source_id",
+          "type": "id",
+          "pattern": "^SRC-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ джерела, у тексті розтину ставиться як [SRC-01]"
+        },
+        {
+          "name": "claim",
+          "type": "text",
+          "required": true,
+          "description": "Твердження або подія розтину, які спираються на це джерело"
+        },
+        {
+          "name": "source_title",
+          "type": "text",
+          "required": true,
+          "description": "Назва документа так, як вона написана в самому документі"
+        },
+        {
+          "name": "publisher",
+          "type": "text",
+          "required": true,
+          "description": "Установа або видання, яке випустило документ"
+        },
+        {
+          "name": "url",
+          "type": "text",
+          "pattern": "^https?://\\S+$",
+          "required": true,
+          "description": "Пряме посилання на документ, не на головну сторінку сайту"
+        },
+        {
+          "name": "pub_date",
+          "type": "date",
+          "required": true,
+          "description": "Дата публікації документа"
+        },
+        {
+          "name": "accessed",
+          "type": "date",
+          "required": true,
+          "description": "Дата, коли ви відкривали документ"
+        }
+      ],
+      "rules": [
+        {
+          "id": "SRC-1",
+          "severity": "error",
+          "text": "Різних значень publisher щонайменше два: одна установа це одна точка зору"
+        },
+        {
+          "id": "SRC-2",
+          "severity": "error",
+          "text": "Різних значень url щонайменше три: три рядки на один документ це одне джерело"
+        },
+        {
+          "id": "SRC-3",
+          "severity": "error",
+          "text": "Щонайменше одне джерело поза доменом wikipedia.org"
+        },
+        {
+          "id": "SRC-4",
+          "severity": "warning",
+          "text": "Дата accessed не раніша за pub_date"
+        }
+      ]
+    },
+    {
+      "path": "lr02_approach/approach.csv",
+      "work": "ЛР2",
+      "title": "Матриця критеріїв вибору підходу",
+      "key": "case_id + criterion",
+      "min_rows": 18,
+      "columns": [
+        {
+          "name": "case_id",
+          "type": "enum",
+          "enum": "lr02_case",
+          "ref": "lr02_approach/decision.csv:case_id",
+          "required": true,
+          "description": "Кейс курсу, описаний у роздатковому матеріалі ЛР2"
+        },
+        {
+          "name": "criterion",
+          "type": "enum",
+          "enum": "criterion",
+          "required": true,
+          "description": "Критерій вибору з таблиці лекції L2, шість штук на кожен кейс"
+        },
+        {
+          "name": "pull",
+          "type": "enum",
+          "enum": "pull",
+          "required": true,
+          "description": "Куди цей критерій тягне саме в цьому кейсі"
+        },
+        {
+          "name": "argument",
+          "type": "text",
+          "required": true,
+          "description": "Факт з опису кейсу, через який критерій тягне саме туди, одним рядком"
+        }
+      ],
+      "rules": [
+        {
+          "id": "AP-1",
+          "severity": "error",
+          "text": "Пара case_id і criterion унікальна: один критерій оцінюється в кейсі один раз"
+        },
+        {
+          "id": "AP-2",
+          "severity": "error",
+          "text": "У кожного case_id рівно шість рядків, по одному на кожен критерій зі словника"
+        },
+        {
+          "id": "AP-3",
+          "severity": "warning",
+          "text": "Аргумент довший за 40 символів: переказ назви критерію аргументом не є"
+        },
+        {
+          "id": "AP-4",
+          "severity": "warning",
+          "text": "У кожного кейсу щонайменше два різні значення pull: шість однакових стрілок означають, що кейс не читали"
+        },
+        {
+          "id": "AP-5",
+          "severity": "warning",
+          "text": "Рядків зі значенням pull neutral не більше двох з вісімнадцяти: neutral це відсутність тяги, а не спосіб не вирішувати"
+        }
+      ]
+    },
+    {
+      "path": "lr02_approach/decision.csv",
+      "work": "ЛР2",
+      "title": "Рішення по кейсах ЛР2",
+      "key": "case_id",
+      "min_rows": 3,
+      "columns": [
+        {
+          "name": "case_id",
+          "type": "enum",
+          "enum": "lr02_case",
+          "required": true,
+          "unique": true,
+          "description": "Кейс курсу, один рядок на кейс"
+        },
+        {
+          "name": "chosen_approach",
+          "type": "enum",
+          "enum": "approach",
+          "required": true,
+          "description": "Обраний підхід до цього кейсу"
+        },
+        {
+          "name": "main_conflict",
+          "type": "enum",
+          "enum": "criterion",
+          "required": true,
+          "description": "Критерій, який тягне проти обраного підходу і ціну якого ви платите свідомо"
+        },
+        {
+          "name": "contract_impact",
+          "type": "text",
+          "required": true,
+          "description": "Що зміниться у виборі, якщо змінити контрактну модель кейсу"
+        },
+        {
+          "name": "first_step",
+          "type": "text",
+          "required": true,
+          "description": "Перша дія PM у перший тиждень такого проєкту"
+        }
+      ],
+      "rules": [
+        {
+          "id": "DC-1",
+          "severity": "error",
+          "text": "У файлі присутні всі три кейси курсу: C-1, C-2 і C-3"
+        },
+        {
+          "id": "DC-2",
+          "severity": "warning",
+          "text": "contract_impact і first_step довші за 40 символів і не повторюють назву підходу"
+        },
+        {
+          "id": "DC-3",
+          "severity": "warning",
+          "text": "Різних значень chosen_approach щонайменше два: три однакові відповіді на три різні кейси це привід до розмови"
+        }
+      ]
+    },
+    {
+      "path": "lr05_charter/stakeholders.csv",
+      "work": "ЛР5",
+      "title": "Карта стейкхолдерів",
+      "key": "stakeholder_id",
+      "min_rows": 5,
+      "columns": [
+        {
+          "name": "stakeholder_id",
+          "type": "id",
+          "pattern": "^ST-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ стейкхолдера, живе далі в RACI і плані комунікацій"
+        },
+        {
+          "name": "name_or_role",
+          "type": "text",
+          "required": true,
+          "description": "Роль або умовне ім'я персонажа, не реальна людина"
+        },
+        {
+          "name": "organization",
+          "type": "text",
+          "required": false,
+          "description": "Сторона, яку представляє"
+        },
+        {
+          "name": "interest",
+          "type": "enum",
+          "enum": "interest",
+          "required": true,
+          "description": "Інтерес до проєкту за матрицею"
+        },
+        {
+          "name": "influence",
+          "type": "enum",
+          "enum": "influence",
+          "required": true,
+          "description": "Вплив на проєкт за матрицею"
+        },
+        {
+          "name": "attitude",
+          "type": "enum",
+          "enum": "attitude",
+          "required": true,
+          "description": "Ставлення до проєкту"
+        },
+        {
+          "name": "strategy",
+          "type": "enum",
+          "enum": "stakeholder_strategy",
+          "required": true,
+          "description": "Стратегія роботи, має відповідати квадранту"
+        },
+        {
+          "name": "owner",
+          "type": "text",
+          "required": true,
+          "description": "Хто веде ці відносини з вашого боку: ви або роль зі складу вашого варіанта"
+        }
+      ],
+      "rules": [
+        {
+          "id": "ST-1",
+          "severity": "error",
+          "text": "Стратегія відповідає квадранту: high/high це manage_closely, низький інтерес і високий вплив це keep_satisfied, високий інтерес і низький вплив це keep_informed, low/low це monitor"
+        },
+        {
+          "id": "ST-2",
+          "severity": "error",
+          "text": "Щонайменше один стейкхолдер має стратегію manage_closely"
+        },
+        {
+          "id": "ST-3",
+          "severity": "error",
+          "text": "Щонайменше один стейкхолдер має attitude, відмінне від supporter: проєкт, який нікому не заважає, зазвичай нікому й не потрібен"
+        }
+      ]
+    },
+    {
+      "path": "lr05_charter/success_criteria.csv",
+      "work": "ЛР5",
+      "title": "Критерії успіху проєкту",
+      "key": "criterion_id",
+      "min_rows": 3,
+      "columns": [
+        {
+          "name": "criterion_id",
+          "type": "id",
+          "pattern": "^SC-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ критерію, живе далі в беклозі і в звіті про закриття"
+        },
+        {
+          "name": "criterion",
+          "type": "text",
+          "required": true,
+          "description": "Що саме вважається успіхом, одна фраза без слова «зручний»"
+        },
+        {
+          "name": "metric",
+          "type": "text",
+          "required": true,
+          "description": "Що міряємо: величина, а не побажання"
+        },
+        {
+          "name": "baseline",
+          "type": "text",
+          "required": false,
+          "description": "Як зараз, до проєкту. Порожньо, якщо міряти нічого"
+        },
+        {
+          "name": "target",
+          "type": "text",
+          "required": true,
+          "description": "Цільове значення з числом і одиницею"
+        },
+        {
+          "name": "measure_how",
+          "type": "text",
+          "required": true,
+          "description": "Звідки беруться дані і коли вимірюємо"
+        },
+        {
+          "name": "accepted_by",
+          "type": "id",
+          "ref": "lr05_charter/stakeholders.csv:stakeholder_id",
+          "required": true,
+          "description": "Стейкхолдер, який приймає цей критерій"
+        }
+      ],
+      "rules": [
+        {
+          "id": "SC-1",
+          "severity": "error",
+          "text": "У target є число: критерій без числа не приймається жодною стороною"
+        },
+        {
+          "id": "SC-2",
+          "severity": "error",
+          "text": "measure_how не повторює target і називає джерело даних або момент виміру"
+        },
+        {
+          "id": "SC-3",
+          "severity": "error",
+          "text": "Різних значень accepted_by щонайменше два: якщо всі критерії приймає одна людина, карта стейкхолдерів у статуті не працює"
+        }
+      ]
+    },
+    {
+      "path": "lr06_backlog/backlog.csv",
+      "work": "ЛР6",
+      "title": "Беклог продукту",
+      "key": "story_id",
+      "min_rows": 15,
+      "columns": [
+        {
+          "name": "story_id",
+          "type": "id",
+          "pattern": "^S-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Наскрізний ключ історії на весь семестр"
+        },
+        {
+          "name": "epic",
+          "type": "text",
+          "required": true,
+          "description": "Епік, до якого належить історія"
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "required": true,
+          "description": "Коротка назва історії"
+        },
+        {
+          "name": "as_a",
+          "type": "text",
+          "required": true,
+          "description": "Роль користувача"
+        },
+        {
+          "name": "i_want",
+          "type": "text",
+          "required": true,
+          "description": "Що хоче зробити"
+        },
+        {
+          "name": "so_that",
+          "type": "text",
+          "required": true,
+          "description": "Яку цінність отримує"
+        },
+        {
+          "name": "acceptance_criteria",
+          "type": "text",
+          "required": false,
+          "list": true,
+          "min_items": 2,
+          "description": "Критерії приймання через крапку з комою, кожен перевірюваний, щонайменше два. Обов'язкові для історій першого релізу, у далеких історіях лишаються порожніми свідомо"
+        },
+        {
+          "name": "priority_method",
+          "type": "enum",
+          "enum": "priority_method",
+          "required": true,
+          "description": "Метод пріоритезації, однаковий для всього беклогу"
+        },
+        {
+          "name": "priority_score",
+          "type": "text",
+          "required": true,
+          "description": "Значення методу: клас MoSCoW або число RICE чи WSJF"
+        },
+        {
+          "name": "priority_inputs",
+          "type": "text",
+          "list": true,
+          "required": false,
+          "description": "Складники методу через крапку з комою у вигляді ключ=число: reach=400;impact=2;confidence=0.8;effort=1.5 для RICE, business_value=8;time_criticality=5;risk_reduction=3;job_size=3 для WSJF. Обов'язкові для історій першого релізу, для решти достатньо бала. Для MoSCoW порожньо"
+        },
+        {
+          "name": "rank",
+          "type": "int",
+          "required": true,
+          "unique": true,
+          "min": 1,
+          "description": "Місце в черзі, суцільна нумерація від 1"
+        },
+        {
+          "name": "release",
+          "type": "id",
+          "pattern": "^REL-\\d{1,2}$",
+          "required": false,
+          "description": "Реліз, у який історія запланована. Порожньо, якщо історія ще чекає черги. Джерело правди складу релізу: roadmap.csv його не дублює"
+        },
+        {
+          "name": "success_criterion",
+          "type": "id",
+          "ref": "lr05_charter/success_criteria.csv:criterion_id",
+          "required": false,
+          "description": "Критерій успіху зі статуту, на який працює історія. Обов'язковий для історій першого релізу"
+        }
+      ],
+      "rules": [
+        {
+          "id": "BL-1",
+          "severity": "error",
+          "text": "Значення rank утворюють суцільний ряд від 1 до кількості історій без пропусків"
+        },
+        {
+          "id": "BL-2",
+          "severity": "error",
+          "text": "Один priority_method на весь файл"
+        },
+        {
+          "id": "BL-3",
+          "severity": "error",
+          "text": "У кожної історії з release REL-1 заповнені acceptance_criteria"
+        },
+        {
+          "id": "BL-4",
+          "severity": "error",
+          "text": "У перший реліз REL-1 включені щонайменше вісім історій"
+        },
+        {
+          "id": "BL-5",
+          "severity": "error",
+          "text": "У кожної історії з release REL-1 заповнений success_criterion"
+        },
+        {
+          "id": "BL-6",
+          "severity": "error",
+          "text": "Для методів rice і wsjf priority_inputs заповнений у кожної історії першого релізу, і скрізь, де він заповнений, priority_score дорівнює результату формули з похибкою до 0.1"
+        },
+        {
+          "id": "BL-7",
+          "severity": "error",
+          "text": "Для методу moscow priority_score це must, should, could або wont, і історія з класом wont не входить у перший реліз"
+        },
+        {
+          "id": "BL-8",
+          "severity": "warning",
+          "text": "Жодна історія поза першим релізом не стоїть у черзі вище за історію першого релізу"
+        },
+        {
+          "id": "BL-9",
+          "severity": "warning",
+          "text": "Для методу moscow частка must серед історій першого релізу не перевищує 60 відсотків"
+        },
+        {
+          "id": "BL-10",
+          "severity": "error",
+          "text": "Різних епіків у беклозі щонайменше три"
+        },
+        {
+          "id": "BL-11",
+          "severity": "warning",
+          "text": "Жодна історія першого релізу не має final_estimate 21 в estimates.csv: історія на цілий спринт це епік"
+        }
+      ]
+    },
+    {
+      "path": "lr07_wbs/wbs.csv",
+      "work": "ЛР7",
+      "title": "WBS проєкту",
+      "key": "wbs_id",
+      "min_rows": 12,
+      "columns": [
+        {
+          "name": "wbs_id",
+          "type": "id",
+          "pattern": "^\\d+(\\.\\d+)*$",
+          "required": true,
+          "unique": true,
+          "description": "Ієрархічний номер вузла"
+        },
+        {
+          "name": "parent_id",
+          "type": "id",
+          "required": false,
+          "description": "Батьківський вузол, порожньо тільки у кореня"
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "required": true,
+          "description": "Назва пакета робіт"
+        },
+        {
+          "name": "level",
+          "type": "int",
+          "required": true,
+          "min": 1,
+          "description": "Рівень вкладеності, дорівнює кількості сегментів wbs_id"
+        },
+        {
+          "name": "deliverable",
+          "type": "text",
+          "required": true,
+          "description": "Що є результатом вузла, іменник, не дієслово"
+        },
+        {
+          "name": "owner",
+          "type": "text",
+          "required": true,
+          "description": "Відповідальний за пакет"
+        },
+        {
+          "name": "estimate_hours",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "description": "Оцінка в годинах"
+        }
+      ],
+      "rules": [
+        {
+          "id": "WBS-1",
+          "severity": "error",
+          "text": "level дорівнює кількості сегментів у wbs_id"
+        },
+        {
+          "id": "WBS-2",
+          "severity": "error",
+          "text": "parent_id існує у файлі і є префіксом wbs_id"
+        },
+        {
+          "id": "WBS-3",
+          "severity": "error",
+          "text": "Правило 100%: estimate_hours нелистового вузла дорівнює сумі дітей"
+        },
+        {
+          "id": "WBS-4",
+          "severity": "warning",
+          "text": "У WBS присутні пакети управління, тестування і розгортання: типова забута робота"
+        }
+      ]
+    },
+    {
+      "path": "lr07_wbs/schedule.csv",
+      "work": "ЛР7",
+      "title": "Календарний план проєкту",
+      "key": "task_id",
+      "min_rows": 10,
+      "columns": [
+        {
+          "name": "task_id",
+          "type": "id",
+          "pattern": "^T-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ роботи календарного плану"
+        },
+        {
+          "name": "wbs_id",
+          "type": "id",
+          "ref": "lr07_wbs/wbs.csv:wbs_id",
+          "required": true,
+          "description": "Листовий вузол WBS, до якого належить робота"
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "required": true,
+          "description": "Назва роботи або віхи"
+        },
+        {
+          "name": "duration_days",
+          "type": "int",
+          "required": true,
+          "min": 0,
+          "description": "Тривалість у робочих днях; у віхи 0"
+        },
+        {
+          "name": "predecessors",
+          "type": "id_list",
+          "pattern": "^T-\\d{2}$",
+          "ref": "lr07_wbs/schedule.csv:task_id",
+          "required": false,
+          "description": "Попередники через крапку з комою, зв'язок finish to start; порожньо у стартових робіт"
+        },
+        {
+          "name": "milestone",
+          "type": "enum",
+          "enum": "yes_no",
+          "required": true,
+          "description": "Чи є рядок віхою"
+        },
+        {
+          "name": "float_days",
+          "type": "int",
+          "required": true,
+          "min": 0,
+          "description": "Повний резерв роботи в днях, порахований студентом"
+        },
+        {
+          "name": "is_critical",
+          "type": "enum",
+          "enum": "yes_no",
+          "required": true,
+          "description": "Чи лежить робота на критичному шляху"
+        }
+      ],
+      "rules": [
+        {
+          "id": "SCH-1",
+          "severity": "error",
+          "text": "У графі залежностей немає циклів: робота не може бути власним попередником навіть через ланцюг"
+        },
+        {
+          "id": "SCH-2",
+          "severity": "error",
+          "text": "float_days дорівнює повному резерву, порахованому за тривалостями і залежностями"
+        },
+        {
+          "id": "SCH-3",
+          "severity": "error",
+          "text": "is_critical дорівнює yes рівно в тих робіт, чий повний резерв нульовий"
+        },
+        {
+          "id": "SCH-4",
+          "severity": "warning",
+          "text": "У плані щонайменше дві віхи: без контрольних точок графік не має чим міряти рух"
+        },
+        {
+          "id": "SCH-5",
+          "severity": "warning",
+          "text": "Віха має нульову тривалість: milestone це подія, а не робота"
+        }
+      ]
+    },
+    {
+      "path": "lr07_wbs/roadmap.csv",
+      "work": "ЛР7",
+      "title": "Дорожня карта релізів",
+      "key": "release_id",
+      "min_rows": 2,
+      "columns": [
+        {
+          "name": "release_id",
+          "type": "id",
+          "pattern": "^REL-\\d{1,2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ релізу"
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "required": true,
+          "description": "Назва релізу або milestone"
+        },
+        {
+          "name": "target_date",
+          "type": "date",
+          "required": true,
+          "description": "Цільова дата"
+        },
+        {
+          "name": "goal",
+          "type": "text",
+          "required": true,
+          "description": "Яку цінність дає реліз"
+        }
+      ],
+      "rules": [
+        {
+          "id": "RM-1",
+          "severity": "warning",
+          "text": "Кожен release_id зустрічається щонайменше в одній історії lr06_backlog/backlog.csv: реліз без історій це дата, а не реліз"
+        },
+        {
+          "id": "RM-3",
+          "severity": "warning",
+          "text": "Дати релізів зростають за номером"
+        }
+      ]
+    },
+    {
+      "path": "lr08_poker/votes.csv",
+      "work": "ЛР8",
+      "title": "Голоси оцінювання беклогу",
+      "key": "story_id + round + voter",
+      "min_rows": 24,
+      "columns": [
+        {
+          "name": "story_id",
+          "type": "id",
+          "ref": "lr06_backlog/backlog.csv:story_id",
+          "required": true,
+          "description": "Історія, яку оцінювали"
+        },
+        {
+          "name": "round",
+          "type": "int",
+          "required": true,
+          "min": 1,
+          "description": "Номер раунду, від 1"
+        },
+        {
+          "name": "voter",
+          "type": "text",
+          "required": true,
+          "description": "Хто голосував. У триточковій оцінці це рівно три імені, optimistic, likely і pessimistic. У сесії з людьми ім'я або нік, однакове по всіх рядках"
+        },
+        {
+          "name": "vote",
+          "type": "enum",
+          "enum": "story_points",
+          "required": true,
+          "description": "Картка Фібоначчі, знак питання дозволений у будь-якому раунді, крім останнього"
+        }
+      ],
+      "rules": [
+        {
+          "id": "PK-1",
+          "severity": "error",
+          "text": "У межах пари story_id і round кожен voter голосує один раз"
+        },
+        {
+          "id": "PK-2",
+          "severity": "error",
+          "text": "Кожен story_id існує в беклозі"
+        },
+        {
+          "id": "PK-3",
+          "severity": "warning",
+          "text": "У кожному раунді історія має щонайменше три голоси: у триточковій оцінці це optimistic, likely і pessimistic"
+        },
+        {
+          "id": "PK-4",
+          "severity": "error",
+          "text": "Раунд триточкової оцінки має рівно три голоси, optimistic, likely і pessimistic, і оптимістична оцінка не більша за найімовірнішу, а найімовірніша не більша за песимістичну"
+        },
+        {
+          "id": "PK-5",
+          "severity": "error",
+          "text": "Картка ? не стоїть в останньому раунді історії: незрозумілу історію уточнюють і переоцінюють наступним раундом"
+        }
+      ]
+    },
+    {
+      "path": "lr08_poker/estimates.csv",
+      "work": "ЛР8",
+      "title": "Підсумкові оцінки історій",
+      "key": "story_id",
+      "min_rows": 8,
+      "columns": [
+        {
+          "name": "story_id",
+          "type": "id",
+          "ref": "lr06_backlog/backlog.csv:story_id",
+          "required": true,
+          "unique": true,
+          "description": "Історія"
+        },
+        {
+          "name": "final_estimate",
+          "type": "enum",
+          "enum": "final_points",
+          "required": true,
+          "description": "Підсумкова оцінка в story points. Після триточкового раунду це результат PERT, округлений до найближчої картки"
+        },
+        {
+          "name": "rounds",
+          "type": "int",
+          "required": true,
+          "min": 1,
+          "description": "Скільки раундів знадобилось"
+        },
+        {
+          "name": "spread_note",
+          "type": "text",
+          "required": false,
+          "description": "Причина розкиду словами, обов'язкова при великому розриві голосів"
+        }
+      ],
+      "rules": [
+        {
+          "id": "ES-1",
+          "severity": "error",
+          "text": "rounds дорівнює максимальному round цієї історії у votes.csv"
+        },
+        {
+          "id": "ES-2",
+          "severity": "error",
+          "text": "Якщо rounds більше одного, spread_note не порожній"
+        },
+        {
+          "id": "ES-3",
+          "severity": "error",
+          "text": "Кожен story_id з votes.csv має рядок в estimates.csv"
+        },
+        {
+          "id": "ES-4",
+          "severity": "error",
+          "text": "Якщо останній раунд історії триточковий, final_estimate це найближча картка шкали до (O + 4M + P) / 6; при рівній відстані підходить будь-яка з двох сусідніх"
+        },
+        {
+          "id": "ES-5",
+          "severity": "error",
+          "text": "Кожен story_id з estimates.csv має голоси у votes.csv"
+        },
+        {
+          "id": "ES-6",
+          "severity": "error",
+          "text": "Якщо в останньому раунді крайні голоси історії різняться більш ніж на дві картки шкали, spread_note не порожній"
+        }
+      ]
+    },
+    {
+      "path": "lr09_forecast/velocity.csv",
+      "work": "ЛР9",
+      "title": "Історія velocity за вашими спринтами",
+      "key": "sprint",
+      "min_rows": 2,
+      "columns": [
+        {
+          "name": "sprint",
+          "type": "int",
+          "required": true,
+          "unique": true,
+          "min": 1,
+          "description": "Номер спринта"
+        },
+        {
+          "name": "start_date",
+          "type": "date",
+          "required": true,
+          "description": "Початок спринта"
+        },
+        {
+          "name": "end_date",
+          "type": "date",
+          "required": true,
+          "description": "Кінець спринта"
+        },
+        {
+          "name": "points_committed",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "description": "Взято в спринт"
+        },
+        {
+          "name": "points_done",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "description": "Завершено за Definition of Done"
+        }
+      ],
+      "rules": [
+        {
+          "id": "VL-1",
+          "severity": "error",
+          "text": "end_date пізніша за start_date"
+        },
+        {
+          "id": "VL-2",
+          "severity": "error",
+          "text": "Номери спринтів суцільні, без пропусків"
+        },
+        {
+          "id": "VL-3",
+          "severity": "error",
+          "text": "Спринти не перекриваються: start_date наступного спринта не раніша за end_date попереднього"
+        },
+        {
+          "id": "VL-4",
+          "severity": "warning",
+          "text": "Спринт триває від 7 до 21 дня: коротший або довший відрізок це не спринт, а запис заднім числом"
+        }
+      ]
+    },
+    {
+      "path": "lr09_forecast/forecast.csv",
+      "work": "ЛР9",
+      "title": "Прогноз дати релізу",
+      "key": "scenario",
+      "min_rows": 1,
+      "columns": [
+        {
+          "name": "scenario",
+          "type": "text",
+          "required": true,
+          "unique": true,
+          "description": "Назва сценарію, наприклад весь перший реліз або залишок після ваших спринтів"
+        },
+        {
+          "name": "remaining_points",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "description": "Скільки points лишилось у сценарії"
+        },
+        {
+          "name": "simulations",
+          "type": "int",
+          "required": true,
+          "min": 1000,
+          "description": "Кількість прогонів Monte Carlo"
+        },
+        {
+          "name": "p50_sprints",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "description": "Спринтів за медіаною"
+        },
+        {
+          "name": "p85_sprints",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "description": "Спринтів за 85-м перцентилем"
+        },
+        {
+          "name": "p50_date",
+          "type": "date",
+          "required": true,
+          "description": "Дата за медіаною"
+        },
+        {
+          "name": "p85_date",
+          "type": "date",
+          "required": true,
+          "description": "Дата за 85-м перцентилем"
+        }
+      ],
+      "rules": [
+        {
+          "id": "FC-1",
+          "severity": "error",
+          "text": "p85_sprints не менше за p50_sprints, p85_date не раніша за p50_date"
+        },
+        {
+          "id": "FC-2",
+          "severity": "error",
+          "text": "remaining_points не більший за суму всіх final_estimate з estimates.csv (помилка), і хоча б один сценарій дорівнює сумі final_estimate історій REL-1 за колонкою release беклогу (інакше попередження)"
+        },
+        {
+          "id": "FC-3",
+          "severity": "error",
+          "text": "Відстань між p50_date і p85_date дорівнює різниці p85_sprints і p50_sprints, помноженій на 14 днів: спринт у курсі двотижневий"
+        }
+      ]
+    },
+    {
+      "path": "lr11_risks_quality/risks.csv",
+      "work": "ЛР11",
+      "title": "Реєстр ризиків",
+      "key": "risk_id",
+      "min_rows": 6,
+      "columns": [
+        {
+          "name": "risk_id",
+          "type": "id",
+          "pattern": "^R-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ ризику"
+        },
+        {
+          "name": "category",
+          "type": "enum",
+          "enum": "risk_category",
+          "required": true,
+          "description": "Категорія за структурою ризиків"
+        },
+        {
+          "name": "cause",
+          "type": "text",
+          "required": true,
+          "description": "Причина, факт теперішнього часу"
+        },
+        {
+          "name": "event",
+          "type": "text",
+          "required": true,
+          "description": "Подія, яка може статися"
+        },
+        {
+          "name": "consequence",
+          "type": "text",
+          "required": true,
+          "description": "Наслідок для проєкту"
+        },
+        {
+          "name": "probability",
+          "type": "int",
+          "required": true,
+          "min": 1,
+          "max": 5,
+          "description": "Імовірність від 1 до 5"
+        },
+        {
+          "name": "impact",
+          "type": "int",
+          "required": true,
+          "min": 1,
+          "max": 5,
+          "description": "Вплив від 1 до 5"
+        },
+        {
+          "name": "score",
+          "type": "int",
+          "required": true,
+          "description": "Добуток probability на impact"
+        },
+        {
+          "name": "strategy",
+          "type": "enum",
+          "enum": "risk_strategy",
+          "required": true,
+          "description": "Стратегія реагування"
+        },
+        {
+          "name": "owner",
+          "type": "text",
+          "required": true,
+          "description": "Власник ризику, одна людина на ім'я"
+        },
+        {
+          "name": "trigger",
+          "type": "text",
+          "required": true,
+          "description": "Сигнал, за яким вмикається план"
+        },
+        {
+          "name": "response_plan",
+          "type": "text",
+          "required": true,
+          "description": "Що робимо, коли спрацював тригер"
+        },
+        {
+          "name": "status",
+          "type": "enum",
+          "enum": "risk_status",
+          "required": true,
+          "description": "Стан ризику"
+        },
+        {
+          "name": "review_date",
+          "type": "date",
+          "required": true,
+          "description": "Дата останнього перегляду цього рядка"
+        },
+        {
+          "name": "previous_score",
+          "type": "int",
+          "required": false,
+          "description": "Попередній score, якщо на перегляді оцінка змінилась. Порожньо, якщо не змінювалась"
+        },
+        {
+          "name": "review_note",
+          "type": "text",
+          "required": false,
+          "description": "Що змінилось на перегляді і чому. Обов'язкове, якщо заповнений previous_score"
+        },
+        {
+          "name": "related_story_ids",
+          "type": "id_list",
+          "ref": "lr06_backlog/backlog.csv:story_id",
+          "required": false,
+          "description": "Історії, яких стосується ризик"
+        }
+      ],
+      "rules": [
+        {
+          "id": "RK-1",
+          "severity": "error",
+          "text": "score дорівнює probability помножити на impact"
+        },
+        {
+          "id": "RK-2",
+          "severity": "error",
+          "text": "У реєстрі є щонайменше один ризик кожної категорії"
+        },
+        {
+          "id": "RK-3",
+          "severity": "error",
+          "text": "Власник це одна людина, значення «команда» або «всі» не приймається"
+        },
+        {
+          "id": "RK-4",
+          "severity": "warning",
+          "text": "Для score від 15 і вище план реагування описаний кроками, а не одним словом"
+        },
+        {
+          "id": "RK-5",
+          "severity": "error",
+          "text": "Якщо заповнений previous_score, він відрізняється від score, а review_note не порожній"
+        },
+        {
+          "id": "RK-6",
+          "severity": "warning",
+          "text": "Щонайменше два ризики мають заповнений previous_score: реєстр, у якому після спринта не змінилось нічого, найчастіше не переглядали"
+        }
+      ]
+    },
+    {
+      "path": "lr11_risks_quality/techdebt.csv",
+      "work": "ЛР11",
+      "title": "Реєстр технічного боргу",
+      "key": "debt_id",
+      "min_rows": 3,
+      "columns": [
+        {
+          "name": "debt_id",
+          "type": "id",
+          "pattern": "^D-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ запису"
+        },
+        {
+          "name": "area",
+          "type": "text",
+          "required": true,
+          "description": "Де саме борг: модуль, процес, документація"
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "required": true,
+          "description": "У чому борг"
+        },
+        {
+          "name": "type",
+          "type": "enum",
+          "enum": "debt_type",
+          "required": true,
+          "description": "Квадрант Фаулера"
+        },
+        {
+          "name": "origin",
+          "type": "text",
+          "required": true,
+          "description": "Звідки взявся: рішення, спринт, обставина"
+        },
+        {
+          "name": "impact",
+          "type": "enum",
+          "enum": "debt_impact",
+          "required": true,
+          "description": "Вплив на швидкість або якість"
+        },
+        {
+          "name": "effort_hours",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "description": "Оцінка вартості повернення боргу"
+        },
+        {
+          "name": "decision",
+          "type": "enum",
+          "enum": "debt_decision",
+          "required": true,
+          "description": "Рішення по пункту: pay_now гасимо зараз, pay_later гасимо пізніше за планом, accept свідомо не гасимо"
+        },
+        {
+          "name": "plan",
+          "type": "text",
+          "required": true,
+          "description": "Коли і як гасимо"
+        },
+        {
+          "name": "owner",
+          "type": "text",
+          "required": true,
+          "description": "Відповідальний"
+        },
+        {
+          "name": "due_sprint",
+          "type": "int",
+          "required": false,
+          "description": "Спринт, до якого запланована робота. Порожньо в рішення accept"
+        }
+      ],
+      "rules": [
+        {
+          "id": "TD-1",
+          "severity": "warning",
+          "text": "Щонайменше один запис має тип deliberate_prudent: свідомий борг з рішенням у беклозі"
+        },
+        {
+          "id": "TD-2",
+          "severity": "error",
+          "text": "У рішень pay_now і pay_later заповнений due_sprint, у рішення accept він порожній"
+        }
+      ]
+    },
+    {
+      "path": "lr11_risks_quality/changelog.csv",
+      "work": "ЛР11",
+      "title": "Журнал змін обсягу",
+      "key": "change_id",
+      "min_rows": 1,
+      "columns": [
+        {
+          "name": "change_id",
+          "type": "id",
+          "pattern": "^CH-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ запису журналу"
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "required": true,
+          "description": "Дата, коли зміна прийшла"
+        },
+        {
+          "name": "source",
+          "type": "enum",
+          "enum": "change_source",
+          "required": true,
+          "description": "Звідки прийшла зміна: подія курсу, замовник, власне рішення, зовнішня вимога"
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "required": true,
+          "description": "Чого просять або що змінюється"
+        },
+        {
+          "name": "story_ids",
+          "type": "id_list",
+          "ref": "lr06_backlog/backlog.csv:story_id",
+          "required": false,
+          "description": "Історії беклогу, яких зміна торкнулась: додані, винесені з релізу або переписані"
+        },
+        {
+          "name": "points_delta",
+          "type": "number",
+          "required": false,
+          "description": "На скільки story points змінився обсяг першого релізу; від'ємне число означає скорочення"
+        },
+        {
+          "name": "decision",
+          "type": "enum",
+          "enum": "change_decision",
+          "required": true,
+          "description": "Рішення: accepted беремо, rejected не беремо, deferred відкладаємо"
+        },
+        {
+          "name": "rationale",
+          "type": "text",
+          "required": true,
+          "description": "Чому саме таке рішення"
+        },
+        {
+          "name": "affected_files",
+          "type": "text",
+          "required": false,
+          "description": "Файли портфеля, оновлені через цю зміну, через крапку з комою"
+        }
+      ],
+      "rules": [
+        {
+          "id": "CH-1",
+          "severity": "error",
+          "text": "Щонайменше один рядок має source course_event: подія курсу відпрацьована в журналі"
+        },
+        {
+          "id": "CH-2",
+          "severity": "error",
+          "text": "У рядка з рішенням accepted заповнені points_delta і affected_files: прийнята зміна міняє числа і файли портфеля"
+        },
+        {
+          "id": "CH-3",
+          "severity": "error",
+          "text": "У рядка з рішенням accepted заповнений story_ids: зміна обсягу, яка не торкнулась жодної історії, обсягу не змінила"
+        }
+      ]
+    },
+    {
+      "path": "lr12_communication/raci.csv",
+      "work": "ЛР12",
+      "title": "Матриця RACI у довгому форматі",
+      "key": "activity_id + stakeholder_id",
+      "min_rows": 18,
+      "columns": [
+        {
+          "name": "activity_id",
+          "type": "id",
+          "pattern": "^A-\\d{2}$",
+          "required": true,
+          "description": "Ключ активності, повторюється в рядках однієї активності"
+        },
+        {
+          "name": "activity",
+          "type": "text",
+          "required": true,
+          "description": "Назва активності, однакова для всіх рядків одного activity_id"
+        },
+        {
+          "name": "wbs_id",
+          "type": "id",
+          "ref": "lr07_wbs/wbs.csv:wbs_id",
+          "required": false,
+          "description": "Пакет робіт з WBS, до якого належить активність. Порожньо в активностей-рішень, яких у плані немає окремим вузлом"
+        },
+        {
+          "name": "stakeholder_id",
+          "type": "id",
+          "ref": "lr05_charter/stakeholders.csv:stakeholder_id",
+          "required": true,
+          "description": "Учасник з карти стейкхолдерів"
+        },
+        {
+          "name": "role",
+          "type": "enum",
+          "enum": "raci_role",
+          "required": true,
+          "description": "Роль у цій активності. AR це та сама сторона, яка і виконує, і відповідає за результат"
+        }
+      ],
+      "rules": [
+        {
+          "id": "RC-1",
+          "severity": "error",
+          "text": "Пара activity_id і stakeholder_id унікальна"
+        },
+        {
+          "id": "RC-2",
+          "severity": "error",
+          "text": "Рівно одна роль A на кожну активність, і AR рахується тут як A"
+        },
+        {
+          "id": "RC-3",
+          "severity": "error",
+          "text": "Щонайменше одна роль R на кожну активність, і AR рахується тут як R"
+        },
+        {
+          "id": "RC-4",
+          "severity": "error",
+          "text": "Текст activity однаковий у всіх рядках одного activity_id"
+        },
+        {
+          "id": "RC-5",
+          "severity": "warning",
+          "text": "Активностей щонайменше шість, тобто чотири з вузлом плану і дві без нього, широку таблицю для людей видно в README"
+        },
+        {
+          "id": "RC-6",
+          "severity": "error",
+          "text": "Значення wbs_id однакове в усіх рядках одного activity_id"
+        },
+        {
+          "id": "RC-7",
+          "severity": "error",
+          "text": "Щонайменше чотири активності посилаються на вузол WBS: матриця будується на вашому плані, а не на загальних словах"
+        },
+        {
+          "id": "RC-8",
+          "severity": "error",
+          "text": "Роль A стоїть щонайменше у двох різних стейкхолдерів, AR рахується як A: якщо за все відповідає одна сторона, спірних призначень у матриці немає"
+        },
+        {
+          "id": "RC-9",
+          "severity": "error",
+          "text": "Щонайменше дві активності не мають wbs_id: матриця без рішень описує роботу, але не відповідальність"
+        }
+      ]
+    },
+    {
+      "path": "lr12_communication/communication.csv",
+      "work": "ЛР12",
+      "title": "План комунікацій",
+      "key": "item_id",
+      "min_rows": 5,
+      "columns": [
+        {
+          "name": "item_id",
+          "type": "id",
+          "pattern": "^C-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ рядка плану"
+        },
+        {
+          "name": "stakeholder_id",
+          "type": "id",
+          "ref": "lr05_charter/stakeholders.csv:stakeholder_id",
+          "required": true,
+          "description": "Кому адресовано"
+        },
+        {
+          "name": "message",
+          "type": "text",
+          "required": true,
+          "description": "Що саме повідомляємо"
+        },
+        {
+          "name": "channel",
+          "type": "enum",
+          "enum": "channel",
+          "required": true,
+          "description": "Канал"
+        },
+        {
+          "name": "frequency",
+          "type": "enum",
+          "enum": "frequency",
+          "required": true,
+          "description": "Частота або подія-тригер"
+        },
+        {
+          "name": "format",
+          "type": "enum",
+          "enum": "comm_format",
+          "required": true,
+          "description": "Форма подачі"
+        },
+        {
+          "name": "owner",
+          "type": "text",
+          "required": true,
+          "description": "Хто відповідає за цю комунікацію"
+        }
+      ],
+      "rules": [
+        {
+          "id": "CM-1",
+          "severity": "error",
+          "text": "Кожен стейкхолдер зі стратегією manage_closely або keep_satisfied має щонайменше один рядок"
+        },
+        {
+          "id": "CM-2",
+          "severity": "error",
+          "text": "Щонайменше один рядок має frequency on_event: погана новина йде за подією, а не чекає планового звіту"
+        },
+        {
+          "id": "CM-3",
+          "severity": "warning",
+          "text": "Щонайменше один рядок має регулярну частоту daily, weekly, biweekly або monthly: план з самих подій не будує ритму"
+        }
+      ]
+    },
+    {
+      "path": "lr14_metrics/flow.csv",
+      "work": "ЛР14",
+      "title": "Потік задач: завершені картки дошки ЛР4 і картки двох реальних спринтів M5",
+      "key": "item_id",
+      "min_rows": 12,
+      "columns": [
+        {
+          "name": "item_id",
+          "type": "id",
+          "pattern": "^F-\\d{3}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ картки на дошці"
+        },
+        {
+          "name": "story_id",
+          "type": "id",
+          "ref": "lr06_backlog/backlog.csv:story_id",
+          "required": false,
+          "description": "Історія беклогу, якщо картка з неї"
+        },
+        {
+          "name": "type",
+          "type": "enum",
+          "enum": "flow_type",
+          "required": true,
+          "description": "Тип роботи"
+        },
+        {
+          "name": "created_date",
+          "type": "date",
+          "required": true,
+          "description": "Коли картка з'явилась"
+        },
+        {
+          "name": "start_date",
+          "type": "date",
+          "required": true,
+          "description": "Коли взяли в роботу"
+        },
+        {
+          "name": "done_date",
+          "type": "date",
+          "required": true,
+          "description": "Коли завершили за DoD"
+        },
+        {
+          "name": "blocked_days",
+          "type": "int",
+          "required": true,
+          "min": 0,
+          "description": "Скільки днів картка стояла заблокованою"
+        }
+      ],
+      "rules": [
+        {
+          "id": "FL-1",
+          "severity": "error",
+          "text": "created_date не пізніше start_date, start_date не пізніше done_date"
+        },
+        {
+          "id": "FL-2",
+          "severity": "error",
+          "text": "blocked_days не перевищує кількість днів між start_date і done_date"
+        },
+        {
+          "id": "FL-3",
+          "severity": "warning",
+          "text": "Щонайменше дві картки без story_id: інакше завершені картки дошки ЛР4 у файл не потрапили"
+        },
+        {
+          "id": "FL-4",
+          "severity": "warning",
+          "text": "Щонайменше два рядки мають story_id: інакше картки двох спринтів у файл не потрапили"
+        },
+        {
+          "id": "FL-5",
+          "severity": "warning",
+          "text": "Не в усіх карток start_date дорівнює done_date: дошка, де кожна картка взята і закрита того самого дня, заповнена заднім числом"
+        }
+      ]
+    },
+    {
+      "path": "lr14_metrics/findings.csv",
+      "work": "ЛР14",
+      "title": "Знахідки за еталонними даними курсу",
+      "key": "finding_id",
+      "min_rows": 6,
+      "columns": [
+        {
+          "name": "finding_id",
+          "type": "id",
+          "pattern": "^FN-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ знахідки"
+        },
+        {
+          "name": "dataset",
+          "type": "enum",
+          "enum": "reference_dataset",
+          "required": true,
+          "description": "Датасет курсу, у якому знайдено"
+        },
+        {
+          "name": "where_seen",
+          "type": "text",
+          "required": true,
+          "description": "Де саме видно: день спринта, тиждень CFD або команда DORA"
+        },
+        {
+          "name": "evidence",
+          "type": "text",
+          "required": true,
+          "description": "Число з даних, яким знахідка доводиться"
+        },
+        {
+          "name": "diagnosis",
+          "type": "text",
+          "required": true,
+          "description": "Що відбувалося з проєктом"
+        },
+        {
+          "name": "action",
+          "type": "text",
+          "required": true,
+          "description": "Що робить PM за цією знахідкою"
+        }
+      ],
+      "rules": [
+        {
+          "id": "FD-1",
+          "severity": "error",
+          "text": "Кожен із трьох датасетів курсу має щонайменше дві знахідки: по одному рядку на датасет це перелік, а не діагноз"
+        },
+        {
+          "id": "FD-2",
+          "severity": "error",
+          "text": "evidence містить щонайменше одне число: знахідка без числа з даних недоказова"
+        },
+        {
+          "id": "FD-3",
+          "severity": "warning",
+          "text": "action не є наміром спостерігати: «стежити», «моніторити», «контролювати» і «тримати на контролі» це не дія"
+        }
+      ]
+    },
+    {
+      "path": "lr14_metrics/dashboard.csv",
+      "work": "ЛР14",
+      "title": "Дашборд стейкхолдера",
+      "key": "metric_id",
+      "min_rows": 3,
+      "columns": [
+        {
+          "name": "metric_id",
+          "type": "id",
+          "pattern": "^MT-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ метрики на дашборді"
+        },
+        {
+          "name": "metric",
+          "type": "text",
+          "required": true,
+          "description": "Назва метрики"
+        },
+        {
+          "name": "value",
+          "type": "text",
+          "required": true,
+          "description": "Поточне значення з одиницею виміру"
+        },
+        {
+          "name": "source_file",
+          "type": "text",
+          "required": true,
+          "description": "Файл портфеля, з якого число береться"
+        },
+        {
+          "name": "reader",
+          "type": "id",
+          "ref": "lr05_charter/stakeholders.csv:stakeholder_id",
+          "required": true,
+          "description": "Хто це читає"
+        },
+        {
+          "name": "threshold",
+          "type": "text",
+          "required": true,
+          "description": "Межа, за якою метрика стає червоною"
+        },
+        {
+          "name": "decision",
+          "type": "text",
+          "required": true,
+          "description": "Рішення, яке ухвалюється після переходу межі"
+        }
+      ],
+      "rules": [
+        {
+          "id": "DB-1",
+          "severity": "error",
+          "text": "Метрик від трьох до п'яти: дашборд на двадцять чисел не читає ніхто"
+        },
+        {
+          "id": "DB-2",
+          "severity": "error",
+          "text": "value містить число: «в межах норми» це не значення метрики"
+        },
+        {
+          "id": "DB-3",
+          "severity": "warning",
+          "text": "Щонайменше одна метрика береться з lr14_metrics/flow.csv: дашборд без власного потоку зібраний з чужих чисел"
+        },
+        {
+          "id": "DB-4",
+          "severity": "error",
+          "text": "threshold містить число або дату: межа, яку не можна перетнути, це не межа"
+        },
+        {
+          "id": "DB-5",
+          "severity": "warning",
+          "text": "decision не є спостереженням: «проаналізувати», «звернути увагу», «розібратись» і «взяти до уваги» це не рішення"
+        }
+      ]
+    },
+    {
+      "path": "lr15_status_report/impact.csv",
+      "work": "ЛР15",
+      "title": "Вплив зміни на п'ять вимірів",
+      "key": "dimension",
+      "min_rows": 5,
+      "columns": [
+        {
+          "name": "dimension",
+          "type": "enum",
+          "enum": "impact_dimension",
+          "required": true,
+          "unique": true,
+          "description": "Вимір впливу: обсяг, строк, бюджет, якість, ризики"
+        },
+        {
+          "name": "before",
+          "type": "text",
+          "required": true,
+          "description": "Стан без зміни; якщо зміну прийнято, це стан до події курсу"
+        },
+        {
+          "name": "after",
+          "type": "text",
+          "required": true,
+          "description": "Стан, який настане, якщо зміну взяти; рахується незалежно від ухваленого рішення"
+        },
+        {
+          "name": "delta",
+          "type": "text",
+          "required": true,
+          "description": "Різниця одним числом або назвою того, що саме змінюється"
+        },
+        {
+          "name": "risk_ids",
+          "type": "id_list",
+          "ref": "lr11_risks_quality/risks.csv:risk_id",
+          "required": false,
+          "description": "Ризики реєстру, які зміна зачіпає; обов'язкові в рядку risk"
+        },
+        {
+          "name": "source_file",
+          "type": "text",
+          "required": true,
+          "description": "Файл портфеля, з якого взяте число"
+        },
+        {
+          "name": "note",
+          "type": "text",
+          "required": true,
+          "description": "Одне речення: що ця різниця означає для проєкту"
+        }
+      ],
+      "rules": [
+        {
+          "id": "IM-1",
+          "severity": "error",
+          "text": "У рядках scope, schedule і budget поля before і after містять число"
+        },
+        {
+          "id": "IM-2",
+          "severity": "error",
+          "text": "Рядок risk має непорожній risk_ids: зміна, яка не зачепила жодного ризику реєстру, не оцінена"
+        },
+        {
+          "id": "IM-3",
+          "severity": "error",
+          "text": "Щонайменше в трьох рядках before і after різні: зміна, після якої в портфелі нічого не рухається, зміною не є"
+        },
+        {
+          "id": "IM-4",
+          "severity": "warning",
+          "text": "delta не є оцінним словом без числа на кшталт незначний, суттєвий або мінімальний"
+        }
+      ]
+    },
+    {
+      "path": "lr16_budget/rate_card.csv",
+      "work": "ЛР16",
+      "title": "Rate card за ролями вашого варіанта",
+      "key": "role",
+      "min_rows": 3,
+      "columns": [
+        {
+          "name": "role",
+          "type": "text",
+          "required": true,
+          "unique": true,
+          "description": "Роль зі складу команди вашого варіанта: PM, BA, Dev, QA, UX, DevOps"
+        },
+        {
+          "name": "fte",
+          "type": "number",
+          "required": true,
+          "min": 0.01,
+          "description": "Сумарна зайнятість ролі у варіанті в частках повного дня: два Dev по 100 і 50 відсотків дають 1.5"
+        },
+        {
+          "name": "hours",
+          "type": "number",
+          "required": true,
+          "min": 1,
+          "description": "Години ролі за строк варіанта: fte × тижні × 40"
+        },
+        {
+          "name": "rate",
+          "type": "number",
+          "required": true,
+          "min": 1,
+          "description": "Ставка години в гривнях"
+        },
+        {
+          "name": "source",
+          "type": "text",
+          "required": true,
+          "description": "Звідки взяте співвідношення ставок: посилання на відкритий огляд зарплат або на розділ README"
+        },
+        {
+          "name": "note",
+          "type": "text",
+          "required": false,
+          "description": "Одне речення: чим ця роль відрізняється від сусідніх за ставкою"
+        }
+      ],
+      "rules": [
+        {
+          "id": "RT-1",
+          "severity": "error",
+          "text": "Ставки різних ролей не однакові: прайс, у якому PM і Dev коштують однаково, це не rate card"
+        },
+        {
+          "id": "RT-2",
+          "severity": "error",
+          "text": "Blended rate, тобто сума hours × rate поділена на суму hours, лежить від 400 до 600 гривень включно: верхня межа це стеля вилки варіантів, а власну стелю дає бюджет варіанта, поділений на стелю годин"
+        },
+        {
+          "id": "RT-3",
+          "severity": "warning",
+          "text": "Щонайменше в одному рядку source містить посилання http: ставка без джерела це ставка зі стелі"
+        }
+      ]
+    },
+    {
+      "path": "lr16_budget/budget.csv",
+      "work": "ЛР16",
+      "title": "Кошторис проєкту",
+      "key": "line_id",
+      "min_rows": 6,
+      "columns": [
+        {
+          "name": "line_id",
+          "type": "id",
+          "pattern": "^B-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ рядка кошторису"
+        },
+        {
+          "name": "category",
+          "type": "enum",
+          "enum": "budget_category",
+          "required": true,
+          "description": "Категорія витрат або резерву"
+        },
+        {
+          "name": "role_or_item",
+          "type": "text",
+          "required": true,
+          "description": "Роль для праці або назва позиції"
+        },
+        {
+          "name": "hours",
+          "type": "number",
+          "required": false,
+          "min": 0,
+          "description": "Години, порожньо для непогодинних позицій"
+        },
+        {
+          "name": "rate",
+          "type": "number",
+          "required": false,
+          "min": 0,
+          "description": "Ставка за годину"
+        },
+        {
+          "name": "amount",
+          "type": "number",
+          "required": true,
+          "min": 0,
+          "description": "Сума рядка в валюті проєкту"
+        },
+        {
+          "name": "note",
+          "type": "text",
+          "required": false,
+          "description": "Пояснення, звідки взялась цифра; у рядка contingency тут стоїть відсоток у форматі «12 відсотків прямих витрат»"
+        }
+      ],
+      "rules": [
+        {
+          "id": "BG-1",
+          "severity": "error",
+          "text": "Якщо заповнені hours і rate, amount дорівнює їх добутку з точністю до двох знаків"
+        },
+        {
+          "id": "BG-2",
+          "severity": "error",
+          "text": "Рівно один рядок категорії contingency"
+        },
+        {
+          "id": "BG-3",
+          "severity": "error",
+          "text": "Рівно один рядок категорії management_reserve, і він не входить у baseline"
+        },
+        {
+          "id": "BG-4",
+          "severity": "warning",
+          "text": "Відсоток у note рядка contingency відповідає його amount, порахованому від суми прямих витрат, тобто всіх рядків, крім двох резервів"
+        },
+        {
+          "id": "BG-5",
+          "severity": "error",
+          "text": "Категорія labor має щонайменше два рядки: кошторис однієї ролі це не кошторис команди"
+        },
+        {
+          "id": "BG-6",
+          "severity": "error",
+          "text": "У кожного рядка категорії labor заповнені і hours, і rate: трудовий рядок з однією сумою обходить і звірку добутку, і звірку з прайсом"
+        },
+        {
+          "id": "BG-7",
+          "severity": "error",
+          "text": "Щонайменше один рядок категорії tools, infrastructure або other: проєкт, у якому нічого, крім людей, не коштує грошей, у житті не трапляється"
+        }
+      ]
+    },
+    {
+      "path": "lr16_budget/plan_fact.csv",
+      "work": "ЛР16",
+      "title": "План проти факту за двома спринтами",
+      "key": "sprint",
+      "min_rows": 2,
+      "columns": [
+        {
+          "name": "sprint",
+          "type": "int",
+          "required": true,
+          "unique": true,
+          "min": 1,
+          "max": 2,
+          "description": "Номер спринта, 1 або 2"
+        },
+        {
+          "name": "planned_points",
+          "type": "number",
+          "required": true,
+          "min": 1,
+          "description": "Ємність спринта вашого варіанта"
+        },
+        {
+          "name": "actual_points",
+          "type": "number",
+          "required": true,
+          "min": 1,
+          "description": "Скільки points закрито за Definition of Done"
+        },
+        {
+          "name": "planned_cost_per_point",
+          "type": "number",
+          "required": true,
+          "min": 1,
+          "description": "Вартість спринта за планом поділена на planned_points, у гривнях"
+        },
+        {
+          "name": "actual_cost_per_point",
+          "type": "number",
+          "required": true,
+          "min": 1,
+          "description": "Та сама вартість спринта поділена на actual_points, у гривнях"
+        },
+        {
+          "name": "variance_pct",
+          "type": "number",
+          "required": true,
+          "description": "Наскільки відсотків фактична ціна points дорожча за планову, зі знаком"
+        },
+        {
+          "name": "source_file",
+          "type": "text",
+          "required": true,
+          "description": "Файл, з якого взято actual_points"
+        },
+        {
+          "name": "note",
+          "type": "text",
+          "required": true,
+          "description": "Одне речення: через що вийшло саме таке відхилення"
+        }
+      ],
+      "rules": [
+        {
+          "id": "PF-1",
+          "severity": "error",
+          "text": "planned_cost_per_point × planned_points дорівнює actual_cost_per_point × actual_points з точністю до одного відсотка: обидва добутки це вартість того самого спринта, і команда коштує стільки ж незалежно від того, скільки закрила"
+        },
+        {
+          "id": "PF-2",
+          "severity": "error",
+          "text": "variance_pct дорівнює (actual_cost_per_point − planned_cost_per_point), поділеному на planned_cost_per_point і помноженому на 100, з точністю до 0.5"
+        },
+        {
+          "id": "PF-3",
+          "severity": "error",
+          "text": "planned_cost_per_point однаковий в обох рядках: план береться з варіанта і між спринтами не змінюється"
+        },
+        {
+          "id": "PF-4",
+          "severity": "warning",
+          "text": "В обох спринтах actual_points дорівнює planned_points: план, який збігся двічі підряд, буває, але частіше це числа, підігнані під нуль відхилення"
+        }
+      ]
+    },
+    {
+      "path": "lr17_ai_assistant/tasks.csv",
+      "work": "ЛР17",
+      "title": "Розбір нотаток зустрічі на задачі, рішення і питання",
+      "key": "item_id",
+      "min_rows": 8,
+      "columns": [
+        {
+          "name": "item_id",
+          "type": "id",
+          "pattern": "^AT-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ пункту"
+        },
+        {
+          "name": "source_line",
+          "type": "id",
+          "pattern": "^N-\\d{2}$",
+          "required": true,
+          "description": "Тег рядка нотаток, з якого пункт узятий"
+        },
+        {
+          "name": "type",
+          "type": "enum",
+          "enum": "note_item_type",
+          "required": true,
+          "description": "Задача, ухвалене рішення або відкрите питання"
+        },
+        {
+          "name": "item",
+          "type": "text",
+          "required": true,
+          "description": "Сам пункт одним реченням"
+        },
+        {
+          "name": "origin",
+          "type": "enum",
+          "enum": "item_origin",
+          "required": true,
+          "description": "Хто його знайшов: ви, інструмент або обидва"
+        },
+        {
+          "name": "owner",
+          "type": "text",
+          "required": false,
+          "description": "Відповідальний, названий у нотатках; порожньо, якщо не названий"
+        },
+        {
+          "name": "note",
+          "type": "text",
+          "required": false,
+          "description": "Чим цей пункт відрізняється у двох версіях"
+        }
+      ],
+      "rules": [
+        {
+          "id": "TK-1",
+          "severity": "error",
+          "text": "Щонайменше один рядок з origin mine і щонайменше один з origin ai: колонка з одним значенням це не порівняння двох версій, а одна версія"
+        },
+        {
+          "id": "TK-2",
+          "severity": "error",
+          "text": "Щонайменше два рядки типу open_question: зустріч, після якої не лишилось жодного питання до замовника, у нотатках курсу не описана"
+        },
+        {
+          "id": "TK-3",
+          "severity": "error",
+          "text": "Щонайменше два рядки типу task: перелік з самих питань і рішень не є розбором нотаток"
+        },
+        {
+          "id": "TK-4",
+          "severity": "warning",
+          "text": "У всіх рядків типу task заповнений owner: у нотатках є щонайменше одна задача, відповідального якої не назвали, і порожній owner там це знахідка, а не пропуск"
+        },
+        {
+          "id": "TK-5",
+          "severity": "warning",
+          "text": "У рядків з origin mine або ai порожня колонка note: саме ці рядки і є дифф двох версій, і без пояснення вони нічим не відрізняються від решти"
+        }
+      ]
+    },
+    {
+      "path": "lr17_ai_assistant/prompts.csv",
+      "work": "ЛР17",
+      "title": "Журнал промптів за семестр",
+      "key": "run_id",
+      "min_rows": 4,
+      "columns": [
+        {
+          "name": "run_id",
+          "type": "id",
+          "pattern": "^P-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ запуску"
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "required": true,
+          "description": "Дата запуску"
+        },
+        {
+          "name": "tool",
+          "type": "text",
+          "required": true,
+          "description": "Інструмент і, якщо відома, модель"
+        },
+        {
+          "name": "goal",
+          "type": "text",
+          "required": true,
+          "description": "Що просили зробити"
+        },
+        {
+          "name": "artifact",
+          "type": "text",
+          "required": true,
+          "description": "Файл портфеля, куди пішов або призначався результат"
+        },
+        {
+          "name": "has_input",
+          "type": "enum",
+          "enum": "yes_no",
+          "required": true,
+          "description": "Чи були у промпті вхідні дані, а не сам опис задачі"
+        },
+        {
+          "name": "iterations",
+          "type": "int",
+          "required": true,
+          "min": 1,
+          "description": "Скільки версій промпта надіслали, перша теж рахується; 1 це запуск без уточнень"
+        },
+        {
+          "name": "result",
+          "type": "enum",
+          "enum": "prompt_result",
+          "required": true,
+          "description": "Що зробили з відповіддю"
+        },
+        {
+          "name": "note",
+          "type": "text",
+          "required": false,
+          "description": "Що саме довелось правити"
+        }
+      ],
+      "rules": [
+        {
+          "id": "PR-1",
+          "severity": "error",
+          "text": "Щонайменше три рядки мають has_input yes: промпт без вхідних даних це запрошення до фантазії"
+        },
+        {
+          "id": "PR-2",
+          "severity": "error",
+          "text": "Щонайменше один рядок має iterations від 2: перша відповідь це чернетка для уточнення, а не результат"
+        },
+        {
+          "id": "PR-3",
+          "severity": "error",
+          "text": "Щонайменше два різні значення artifact: журнал з одного файла це не журнал за семестр"
+        },
+        {
+          "id": "PR-4",
+          "severity": "warning",
+          "text": "У всіх рядків result дорівнює used: журнал, у якому жодну відповідь не правили і не відкинули, описує не роботу, а бажаний результат"
+        },
+        {
+          "id": "PR-5",
+          "severity": "warning",
+          "text": "Усі рядки мають одну дату: журнал за семестр, зібраний за один вечір, відновлений з пам'яті"
+        },
+        {
+          "id": "PR-6",
+          "severity": "error",
+          "text": "Щонайменше три значення artifact це шлях до файла портфеля, тобто містять «/» і розширення .csv або .md: журнал називає файли, а не теми розмови"
+        }
+      ]
+    },
+    {
+      "path": "lr17_ai_assistant/errors.csv",
+      "work": "ЛР17",
+      "title": "Помилки інструмента і те, як їх помітили",
+      "key": "error_id",
+      "min_rows": 3,
+      "columns": [
+        {
+          "name": "error_id",
+          "type": "id",
+          "pattern": "^ER-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ помилки"
+        },
+        {
+          "name": "run_id",
+          "type": "id",
+          "ref": "lr17_ai_assistant/prompts.csv:run_id",
+          "required": true,
+          "description": "Запуск із журналу промптів, у якому помилка сталась"
+        },
+        {
+          "name": "error_type",
+          "type": "enum",
+          "enum": "ai_error_type",
+          "required": true,
+          "description": "Тип помилки"
+        },
+        {
+          "name": "what_ai_said",
+          "type": "text",
+          "required": true,
+          "description": "Що саме видав інструмент, цитатою або близько до тексту"
+        },
+        {
+          "name": "why_wrong",
+          "type": "text",
+          "required": true,
+          "description": "Чим це неправда або чого в ньому бракує"
+        },
+        {
+          "name": "how_noticed",
+          "type": "text",
+          "required": true,
+          "description": "З чим звірили: файл портфеля, тег рядка нотаток або посилання"
+        },
+        {
+          "name": "fix",
+          "type": "text",
+          "required": true,
+          "description": "Що поставили замість"
+        }
+      ],
+      "rules": [
+        {
+          "id": "ER-1",
+          "severity": "error",
+          "text": "Щонайменше два різні значення error_type: перелік з однієї помилки, повтореної тричі, не показує меж інструмента"
+        },
+        {
+          "id": "ER-2",
+          "severity": "error",
+          "text": "how_noticed називає джерело звірки: ім'я файла з розширенням, тег рядка нотаток формату N-NN або посилання. «Побачив, що не так» це не спосіб помітити"
+        },
+        {
+          "id": "ER-3",
+          "severity": "warning",
+          "text": "Усі рядки посилаються на один run_id: одна невдала спроба це не перелік помилок інструмента"
+        }
+      ]
+    },
+    {
+      "path": "lr17_ai_assistant/time_saved.csv",
+      "work": "ЛР17",
+      "title": "Заощаджений час із способом підрахунку",
+      "key": "case_id",
+      "min_rows": 3,
+      "columns": [
+        {
+          "name": "case_id",
+          "type": "id",
+          "pattern": "^TS-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ випадку"
+        },
+        {
+          "name": "task",
+          "type": "text",
+          "required": true,
+          "description": "Яка саме робота"
+        },
+        {
+          "name": "basis",
+          "type": "enum",
+          "enum": "time_basis",
+          "required": true,
+          "description": "Заміряно чи оцінено"
+        },
+        {
+          "name": "minutes_manual",
+          "type": "int",
+          "required": true,
+          "min": 1,
+          "description": "Скільки ця робота займає руками, хвилин"
+        },
+        {
+          "name": "minutes_ai",
+          "type": "int",
+          "required": true,
+          "min": 0,
+          "description": "Скільки зайняли промпт і генерація разом із читанням виходу перед уточненням, хвилин"
+        },
+        {
+          "name": "minutes_review",
+          "type": "int",
+          "required": true,
+          "min": 0,
+          "description": "Скільки зайняла перевірка результату, хвилин"
+        },
+        {
+          "name": "minutes_saved",
+          "type": "int",
+          "required": true,
+          "description": "Різниця, може бути від'ємною"
+        },
+        {
+          "name": "how_measured",
+          "type": "text",
+          "required": true,
+          "description": "Звідки взяті числа"
+        }
+      ],
+      "rules": [
+        {
+          "id": "TS-1",
+          "severity": "error",
+          "text": "minutes_saved дорівнює minutes_manual мінус minutes_ai мінус minutes_review"
+        },
+        {
+          "id": "TS-2",
+          "severity": "error",
+          "text": "Щонайменше один рядок має basis measured: сьогоднішні запуски ви робили з годинником, і хоча б один випадок у переліку заміряний, а не пригаданий"
+        },
+        {
+          "id": "TS-3",
+          "severity": "error",
+          "text": "minutes_review більший за нуль у кожному рядку: результат, який ніхто не перевіряв, не заощаджує час, а переносить ризик далі"
+        },
+        {
+          "id": "TS-4",
+          "severity": "warning",
+          "text": "minutes_saved додатний у всіх рядках: за семестр буває і навпаки, і випадок, де перевірка з'їла виграш, у переліку цінніший за решту"
+        }
+      ]
+    },
+    {
+      "path": "lr17_ai_assistant/policy.csv",
+      "work": "ЛР17",
+      "title": "Правило роботи з AI на власному проєкті",
+      "key": "rule_id",
+      "min_rows": 5,
+      "columns": [
+        {
+          "name": "rule_id",
+          "type": "id",
+          "pattern": "^PL-\\d{2}$",
+          "required": true,
+          "unique": true,
+          "description": "Ключ правила"
+        },
+        {
+          "name": "case",
+          "type": "text",
+          "required": true,
+          "description": "Яка робота або який тип даних"
+        },
+        {
+          "name": "mode",
+          "type": "enum",
+          "enum": "ai_mode",
+          "required": true,
+          "description": "Режим: робить сам, дає чернетку під рев'ю, не робить"
+        },
+        {
+          "name": "owner",
+          "type": "text",
+          "required": true,
+          "description": "Хто підписується під результатом"
+        },
+        {
+          "name": "check",
+          "type": "text",
+          "required": true,
+          "description": "Чим результат перевіряється до використання"
+        },
+        {
+          "name": "why",
+          "type": "text",
+          "required": true,
+          "description": "Чому саме такий режим"
+        }
+      ],
+      "rules": [
+        {
+          "id": "PL-1",
+          "severity": "error",
+          "text": "Щонайменше два рядки forbidden і щонайменше два draft: правило, у якому дозволено все, не є правилом"
+        },
+        {
+          "id": "PL-2",
+          "severity": "error",
+          "text": "Щонайменше в одного рядка case називає файл вашого портфеля, тобто містить .csv або .md: правило пишеться під власний проєкт, а не взагалі"
+        },
+        {
+          "id": "PL-3",
+          "severity": "warning",
+          "text": "Жоден рядок не стосується даних, які не можна віддавати зовнішній моделі: у case немає ні «персональн», ні «конфіденц», ні «приватн», ні «NDA»"
+        },
+        {
+          "id": "PL-4",
+          "severity": "error",
+          "text": "Щонайменше один рядок з режимом autonomous: політика, у якій інструмент не робить нічого сам, описує не роботу з ним, а відмову від нього"
+        }
+      ]
+    }
+  ],
+  "cross_file_rules": [
+    {
+      "id": "X-1",
+      "severity": "error",
+      "text": "Кожен story_id в estimates.csv, votes.csv, risks.csv, changelog.csv і flow.csv існує в backlog.csv"
+    },
+    {
+      "id": "X-2",
+      "severity": "error",
+      "text": "Кожен stakeholder_id у raci.csv, communication.csv, success_criteria.csv і dashboard.csv існує в lr05_charter/stakeholders.csv"
+    },
+    {
+      "id": "X-3",
+      "severity": "error",
+      "text": "remaining_points у forecast.csv звіряється з final_estimate з estimates.csv: сценарій весь перший реліз дорівнює сумі оцінок історій REL-1. Рахується правилом FC-2"
+    },
+    {
+      "id": "X-4",
+      "severity": "warning",
+      "text": "Сума hours категорії labor у budget.csv відрізняється від суми estimate_hours листових вузлів wbs.csv не більше ніж на 45 відсотків. Це перевірка порядку величини, а не рівності: кошторис рахується від стелі годин варіанта, а корінь WBS законно лежить між 70 і 100 відсотками тієї ж стелі"
+    },
+    {
+      "id": "X-5",
+      "severity": "warning",
+      "text": "Кожна історія з release REL-1 у backlog.csv присутня в estimates.csv: план першого релізу оцінений"
+    },
+    {
+      "id": "X-6",
+      "severity": "error",
+      "text": "Версія схеми в README.md вашого репозиторію збігається з версією цієї спеки"
+    },
+    {
+      "id": "X-7",
+      "severity": "error",
+      "text": "Кожен source_id із lr01_case/sources.csv згадується в тексті lr01_case/README.md у форматі [SRC-01]"
+    },
+    {
+      "id": "X-8",
+      "severity": "error",
+      "text": "Кожне посилання [SRC-..] у тексті lr01_case/README.md існує в sources.csv"
+    },
+    {
+      "id": "X-9",
+      "severity": "error",
+      "text": "Кожен case_id із lr02_approach/decision.csv має рівно шість рядків у lr02_approach/approach.csv, по одному на кожен критерій"
+    },
+    {
+      "id": "X-10",
+      "severity": "error",
+      "text": "Критерій main_conflict із lr02_approach/decision.csv має в lr02_approach/approach.csv рядок цього ж кейсу зі значенням pull, протилежним обраному підходу"
+    },
+    {
+      "id": "X-11",
+      "severity": "error",
+      "text": "Кожен wbs_id у lr07_wbs/schedule.csv вказує на листовий вузол lr07_wbs/wbs.csv: календарний план планує роботу, а не заголовок розділу"
+    },
+    {
+      "id": "X-12",
+      "severity": "warning",
+      "text": "Кожен листовий вузол lr07_wbs/wbs.csv зустрічається щонайменше в одній роботі lr07_wbs/schedule.csv: запланована робота без місця в календарі не робиться ніколи"
+    },
+    {
+      "id": "X-13",
+      "severity": "error",
+      "text": "Кожне значення release у lr06_backlog/backlog.csv існує в lr07_wbs/roadmap.csv"
+    },
+    {
+      "id": "X-14",
+      "severity": "warning",
+      "text": "Кожен criterion_id зі lr05_charter/success_criteria.csv згаданий щонайменше в одній історії першого релізу"
+    },
+    {
+      "id": "X-15",
+      "severity": "warning",
+      "text": "Дата перегляду ризиків у risks.csv не раніша за кінець першого спринта у velocity.csv: реєстр переглядають після роботи, а не до неї"
+    },
+    {
+      "id": "X-16",
+      "severity": "error",
+      "text": "Кожен source_file у lr14_metrics/dashboard.csv і lr15_status_report/impact.csv це шлях до файла, який існує і має рядки: метрика з порожньої заготовки шаблону рахується нізвідки"
+    },
+    {
+      "id": "X-17",
+      "severity": "error",
+      "text": "У lr15_status_report/README.md названо щонайменше три метрики формату MT-NN, і кожна з них існує в lr14_metrics/dashboard.csv: статус-звіт стоїть на числах дашборда"
+    },
+    {
+      "id": "X-18",
+      "severity": "error",
+      "text": "Рішення в lr15_status_report/change_request.md збігається з рішенням рядка course_event у lr11_risks_quality/changelog.csv: approve це accepted, reject це rejected, defer це deferred"
+    },
+    {
+      "id": "X-19",
+      "severity": "error",
+      "text": "Кожна ставка rate трудового рядка lr16_budget/budget.csv є в колонці rate файла lr16_budget/rate_card.csv: кошторис рахується за прайсом, а не поруч із ним"
+    },
+    {
+      "id": "X-20",
+      "severity": "error",
+      "text": "Сума hours категорії labor у lr16_budget/budget.csv відрізняється від суми hours у lr16_budget/rate_card.csv не більше ніж на 15 відсотків"
+    },
+    {
+      "id": "X-21",
+      "severity": "warning",
+      "text": "actual_points у lr16_budget/plan_fact.csv збігається з points_done відповідного спринта lr09_forecast/velocity.csv"
+    },
+    {
+      "id": "X-22",
+      "severity": "error",
+      "text": "Кожен source_line у lr17_ai_assistant/tasks.csv є тегом рядка у lr17_ai_assistant/input_notes.md: пункт, якого в нотатках немає, це не розбір нотаток"
+    },
+    {
+      "id": "X-23",
+      "severity": "warning",
+      "text": "Кожен artifact у lr17_ai_assistant/prompts.csv це шлях до файла, і цей файл існує у вашому репозиторії"
+    },
+    {
+      "id": "X-24",
+      "severity": "warning",
+      "text": "Щонайменше три рядки lr17_ai_assistant/prompts.csv мають artifact поза папкою lr17_ai_assistant: журнал за семестр, у якому всі запуски зроблені в останній роботі"
+    }
+  ],
+  "markdown_artifacts": [
+    {
+      "path": "README.md",
+      "work": "ЛР1",
+      "title": "Картка студента",
+      "hint": "Прізвище і GitHub-логін, підгрупа, тема, номер варіанта вхідних умов, посилання на трекер і дошку, версія схеми артефактів."
+    },
+    {
+      "path": "lr01_case/README.md",
+      "work": "ЛР1",
+      "title": "Розтин провалу реального ІТ проєкту",
+      "hint": "Кейс із перевірюваними джерелами, патерни провалу, висновки для власного проєкту.",
+      "skeleton": "tools/skeletons/lr01_case_README.md"
+    },
+    {
+      "path": "lr02_approach/README.md",
+      "work": "ЛР2",
+      "title": "Вибір підходу для трьох проєктів",
+      "hint": "Розбір трьох кейсів словами: конфлікт критеріїв, ціна вибору, стрес-тест контрактом і підхід для власної теми. Матриця і рішення лежать поруч у approach.csv і decision.csv.",
+      "skeleton": "tools/skeletons/lr02_approach_README.md"
+    },
+    {
+      "path": "lr03_sprint_simulation/sprint_log.md",
+      "work": "ЛР3",
+      "title": "Журнал спринта",
+      "hint": "Самостійна робота ЛР3: ціль спринта, оцінки і ємність, три дні, реакція на конверти, огляд, ретроспектива. Власного бала не дає, є входом у ЛР4.",
+      "skeleton": "tools/skeletons/lr03_sprint_log.md"
+    },
+    {
+      "path": "lr03_sprint_simulation/sprints.md",
+      "work": "M5",
+      "title": "Журнал двох спринтів проєкту",
+      "hint": "Два справжні спринти: ціль, дати, спринт-беклог, огляд, ретроспектива і виконана дія з першої ретроспективи, журнал блокерів. Дати збігаються з velocity.csv. Це блоки A, B і C рубрики M5.",
+      "skeleton": "tools/skeletons/lr03_sprints.md"
+    },
+    {
+      "path": "lr04_kanban/README.md",
+      "work": "ЛР4",
+      "title": "Kanban-дошка і перший вимір потоку",
+      "hint": "Definition of Workflow, WIP-ліміти і правило їх дотримання, дванадцять карток із трьома датами, наслідки конвертів, cycle time і вузьке місце. Балів не дає, є входом у ЛР14.",
+      "skeleton": "tools/skeletons/lr04_kanban_README.md"
+    },
+    {
+      "path": "lr05_charter/README.md",
+      "work": "ЛР5",
+      "title": "Статут проєкту, business case і карта стейкхолдерів",
+      "hint": "Мета, business case з порівнянням варіантів рішення, обсяг з переліком «не робимо», обмеження зі свого варіанта, пояснення критеріїв успіху і матриця інтерес-вплив. Критерії лежать поруч у success_criteria.csv, стейкхолдери у stakeholders.csv.",
+      "skeleton": "tools/skeletons/lr05_charter_README.md"
+    },
+    {
+      "path": "lr06_backlog/README.md",
+      "work": "ЛР6",
+      "title": "Беклог: пояснення до даних",
+      "hint": "Обраний метод пріоритезації і чому саме він, розрахунок пріоритетів, нарізка першого релізу проти строку і ємності вашого варіанта, посилання на трекер.",
+      "skeleton": "tools/skeletons/lr06_backlog_README.md"
+    },
+    {
+      "path": "lr06_backlog/dor.md",
+      "work": "ЛР6",
+      "title": "Definition of Ready",
+      "hint": "За яких умов історію можна брати в спринт: перелік умов, межа розумного і те, що свідомо не вимагається.",
+      "skeleton": "tools/skeletons/lr06_dor.md"
+    },
+    {
+      "path": "lr07_wbs/README.md",
+      "work": "ЛР7",
+      "title": "WBS, календарний план і дорожня карта",
+      "hint": "Стеля годин зі складу команди варіанта, як перевіряли правило 100%, що свідомо поза обсягом, критичний шлях проти строку варіанта, віхи і логіка нарізки релізів.",
+      "skeleton": "tools/skeletons/lr07_wbs_README.md"
+    },
+    {
+      "path": "lr08_poker/README.md",
+      "work": "ЛР8",
+      "title": "Оцінювання беклогу: як рахували",
+      "hint": "Формат оцінювання і історія-еталон, історії з найбільшим розкидом і причина невизначеності, сума оцінок першого релізу проти ємності спринта вашого варіанта.",
+      "skeleton": "tools/skeletons/lr08_poker_README.md"
+    },
+    {
+      "path": "lr09_forecast/README.md",
+      "work": "ЛР9",
+      "title": "Прогноз: метод і висновки",
+      "hint": "Звідки взялася velocity, як рахувалася симуляція, що означають P50 і P85 для замовника, прогноз проти критичного шляху з ЛР7 і чого вартий прогноз на такій кількості спринтів.",
+      "skeleton": "tools/skeletons/lr09_forecast_README.md"
+    },
+    {
+      "path": "lr10_review/review.md",
+      "work": "ЛР10",
+      "title": "Рецензія на портфель іншого студента",
+      "hint": "Результат валідатора на чужому репозиторії, перевірка наскрізності, три зауваження з адресами файлів і рядків, одна знахідка. Автор рецензії і автор портфеля названі GitHub-логінами. Балів не дає.",
+      "skeleton": "tools/skeletons/lr10_review_review.md"
+    },
+    {
+      "path": "lr10_review/README.md",
+      "work": "ЛР10",
+      "title": "Реакція на отриману рецензію",
+      "hint": "Рішення по кожному отриманому зауваженню з датою, відхилення з причиною. Балів не дає.",
+      "skeleton": "tools/skeletons/lr10_review_README.md"
+    },
+    {
+      "path": "lr11_risks_quality/README.md",
+      "work": "ЛР11",
+      "title": "Ризики, якість і технічний борг",
+      "hint": "Топ ризиків червоної зони, як працює процес перегляду реєстру, звідки взявся техборг і що змінилось у портфелі після події курсу.",
+      "skeleton": "tools/skeletons/lr11_risks_quality_README.md"
+    },
+    {
+      "path": "lr11_risks_quality/dod.md",
+      "work": "ЛР11",
+      "title": "Definition of Done проєкту",
+      "hint": "Чек-лист умов, за яких робота вважається завершеною. Спільний для всіх історій.",
+      "skeleton": "tools/skeletons/lr11_dod.md"
+    },
+    {
+      "path": "lr12_communication/README.md",
+      "work": "ЛР12",
+      "title": "RACI і план комунікацій",
+      "hint": "Широка таблиця RACI для читання людиною, пояснення спірних призначень A і те, як план комунікацій закриває власників ризиків.",
+      "skeleton": "tools/skeletons/lr12_communication_README.md"
+    },
+    {
+      "path": "lr13_roleplay/dialogue.md",
+      "work": "ЛР13",
+      "title": "Складна розмова зі стейкхолдером",
+      "hint": "Три відповіді стейкхолдерам, другі репліки після конвертів, таблиця ескалації. Балів не дає, є входом у ЛР15.",
+      "skeleton": "tools/skeletons/lr13_roleplay_dialogue.md"
+    },
+    {
+      "path": "lr14_metrics/README.md",
+      "work": "ЛР14",
+      "title": "Аналіз метрик",
+      "hint": "Головні знахідки за еталонними даними курсу, висновок DORA, власні числа потоку (перцентилі cycle time і throughput), пояснення складу дашборда і метрика, яку найлегше накрутити.",
+      "skeleton": "tools/skeletons/lr14_metrics_README.md"
+    },
+    {
+      "path": "lr15_status_report/README.md",
+      "work": "ЛР15",
+      "title": "Статус-звіт для стейкхолдера",
+      "hint": "Звіт на одну сторінку за структурою курсу: RAG-статус із критерієм, головне трьома реченнями, топ-3 ризики, три числа з дашборда і те, якого рішення ви просите в стейкхолдера.",
+      "skeleton": "tools/skeletons/lr15_status_report_README.md"
+    },
+    {
+      "path": "lr15_status_report/change_request.md",
+      "work": "ЛР15",
+      "title": "Запит на зміну",
+      "hint": "Що просить замовник, варіанти дій, рішення approve, reject або defer і три речення для замовника. Числа впливу лежать поруч в impact.csv.",
+      "skeleton": "tools/skeletons/lr15_change_request.md"
+    },
+    {
+      "path": "lr16_budget/README.md",
+      "work": "ЛР16",
+      "title": "Кошторис, резерви і вибір контракту",
+      "hint": "Rate card і звідки взяті ставки, відсоток contingency, різниця між двома резервами, порівняння Fixed Price проти Time and Material у гривнях, обрана модель з її недоліком і прогноз до завершення за фактичним темпом.",
+      "skeleton": "tools/skeletons/lr16_budget_README.md"
+    },
+    {
+      "path": "lr17_ai_assistant/input_notes.md",
+      "work": "ЛР17",
+      "title": "Нотатки зустрічі, з якими ви працювали",
+      "hint": "Дослівна копія розділу вашої теми з lr17_meeting_notes.md разом із тегами рядків.",
+      "skeleton": "tools/skeletons/lr17_input_notes.md"
+    },
+    {
+      "path": "lr17_ai_assistant/README.md",
+      "work": "ЛР17",
+      "title": "AI-асистент PM і межі інструмента",
+      "hint": "Що автоматизували і що показало порівняння двох версій одного документа, чому саме такі межі в правилі роботи з AI, і повний текст трьох промптів роботи.",
+      "skeleton": "tools/skeletons/lr17_ai_assistant_README.md"
+    },
+    {
+      "path": "lr18_closure/closure_report.md",
+      "work": "ЛР18",
+      "title": "Звіт про закриття проєкту",
+      "hint": "Шість розділів: що прийнято, що не завершено, передавання продукту, отримана цінність разом із планом і фактом дати першого релізу та бюджету, lessons learned і три числа, які ви поясните на екзамені. Здається в репозиторій до 23:59 дня пари ЛР19: разом із балами за семестр це допуск до екзамену.",
+      "skeleton": "tools/skeletons/lr18_closure_report.md"
+    }
+  ]
+}
