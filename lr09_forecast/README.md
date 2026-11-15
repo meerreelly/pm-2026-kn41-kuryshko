@@ -76,7 +76,7 @@ def simulate(velocity_history, remaining_points, simulations=10000, seed=42):
     return results  # P50/P85 — перцентилі списку, округлені вгору до цілого спринта
 ```
 
-Повторити прогін: `cd lr09_forecast && python3 -c "from monte_carlo import simulate; print(simulate([0,20], 53)[1:])"`.
+Повторити прогін: `cd lr09_forecast && python3 -c "from monte_carlo import simulate; print(simulate([0,17], 53)[1:])"`.
 
 ## 3. Дві дати першого релізу
 

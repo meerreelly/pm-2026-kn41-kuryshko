@@ -1,1 +1,5 @@
 role,fte,hours,rate,source,note
+PM,0.5,240,625,"README розділ 1: пропорція 1,1 до ставки Dev, бо відкритої медіани PM у звітах DOU за 2026 немає","Єдина роль, ставка якої виведена пропорцією, а не взята з огляду"
+Dev,2.0,960,570,https://dou.ua/lenta/articles/salary-report-devops-winter-2026/,Якір усього прайсу: медіана розробника $3500 за літнім опитуванням DOU 2026
+QA,1.0,480,440,https://forbes.ua/news/testuvalniki-v-ukraini-stali-zaroblyati-bilshe-opituvannya-dou-yaki-qa-spetsializatsii-mayut-nayvishchi-zarplati-20072026-40557,"General QA $2700 проти $3500 у Dev дає 0,77 від ставки розробника"
+DevOps,0.25,120,680,https://dou.ua/lenta/articles/salary-report-devops-winter-2026/,Найдорожча година в прайсі: медіана DevOps/SRE $4200 вища за розробницьку

@@ -1,1 +1,3 @@
 sprint,planned_points,actual_points,planned_cost_per_point,actual_cost_per_point,variance_pct,source_file,note
+1,20,21,7425.0,7071.43,-4.76,lr09_forecast/lr09_reference_velocity.csv,"Мій спринт 1 закрив нуль points і ціни одного point у ньому не існує, тому техніка показана на двох перших рядках навчального датасету курсу"
+2,20,17,7425.0,8735.29,17.65,lr09_forecast/lr09_reference_velocity.csv,"Навчальна команда взяла 22 і закрила 17: недобір дали історії, які не пройшли приймання наприкінці спринта"

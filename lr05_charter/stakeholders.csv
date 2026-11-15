@@ -5,3 +5,7 @@ ST-03,Учасники навчальних сесій,Студентська г
 ST-04,Представник іншої кафедри,Інша кафедра з курсом Agile,high,low,supporter,keep_informed,PM
 ST-05,Адміністратор середовища розгортання,ІТ-служба академії,low,high,neutral,keep_satisfied,DevOps
 ST-06,Служба інформаційної безпеки академії,ІТ-служба академії,high,high,neutral,manage_closely,PM
+ST-07,PM (я),Команда проєкту,high,high,supporter,manage_closely,PM
+ST-08,Dev (розробник),Команда проєкту,high,low,supporter,keep_informed,PM
+ST-09,QA (інженер з якості),Команда проєкту,high,low,supporter,keep_informed,PM
+ST-10,DevOps (інженер з інфраструктури),Команда проєкту,high,low,neutral,keep_informed,PM
